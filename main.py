@@ -8,21 +8,26 @@ def main():
     setDevice1(True)
     setDevice2(True)
 
-    readTemperature()
-    readMoisture()
+    print(readTemperature())
+    print(readMoisture())
 
     setDevice1(False)
     setDevice2(False)
-    # counter = 5
-    # while True:
-    #     if counter <= 0:
-    #         counter = 5
-    #         readTemperature()
-    #         readMoisture()
 
-    #     counter = counter - 1
-    #     # Time base for this loop
-    #     time.sleep(1)
+    print("Starting loop...")
+    timer = 2
+    counter = 0
+    while True:
+        if timer <= 0:
+            timer = 2
+            counter = counter + 1
+            print(f"**Loop {counter}:")
+            print(readTemperature())
+            print(readMoisture())
+
+        timer = timer - 1
+        # Time base for this loop
+        time.sleep(1)
 
 if __name__ == "__main__":
     # demo()

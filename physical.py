@@ -10,13 +10,14 @@ def getPort():
         port = ports[i]
         strPort = str(port)
         print(strPort)
-        if "USB" in strPort:
-              splitPort = strPort.split(" ")
-              commPort = (splitPort[0])
-              return commPort
+        if "AMA2" in strPort:
+            splitPort = strPort.split(" ")
+            commPort = (splitPort[0])
+    return commPort
 
 portName = getPort()
 print(portName)
+ser = serial.Serial
 if portName != "None":
     ser = serial.Serial(port=portName, baudrate=9600)
 
