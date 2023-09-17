@@ -6,15 +6,21 @@ def demo():
 
 def main():
     setDevice1(True)
+    print("Relay 1 ON: " + serial_read_data(ser))
     setDevice2(True)
-
-    print(readTemperature())
-    print(readMoisture())
+    print("Relay 2 ON: " + serial_read_data(ser))
 
     setDevice1(False)
+    print("Relay 1 OFF: " + serial_read_data(ser))
     setDevice2(False)
+    print("Relay 2 OFF: " + serial_read_data(ser))
 
-    print("Starting loop...")
+    print("Read Temperature: " + readTemperature())
+    print("Read Moisture" + readMoisture())
+
+    distance9 = [9, 3, 0, 5, 0, 1, 149, 67]
+    distance12 = [12, 3, 0, 5, 0, 1, 149, 22]
+    print("Starting loop of 2 second task...")
     timer = 2
     counter = 0
     while True:
@@ -22,8 +28,10 @@ def main():
             timer = 2
             counter = counter + 1
             print(f"**Loop {counter}:")
-            print(readTemperature())
-            print(readMoisture())
+            ser.write(distance9)
+            print("distance9: " + serial_read_data(ser))
+            ser.write(distance12)
+            print("distance12: " + serial_read_data(ser))
 
         timer = timer - 1
         # Time base for this loop
