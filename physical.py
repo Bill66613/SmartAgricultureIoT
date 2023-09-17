@@ -10,7 +10,7 @@ def getPort():
         port = ports[i]
         strPort = str(port)
         print(strPort)
-        if "USB Serial" in strPort:
+        if "USB" in strPort:
               splitPort = strPort.split(" ")
               commPort = (splitPort[0])
               return commPort
